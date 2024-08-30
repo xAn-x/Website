@@ -4,7 +4,7 @@ import Image from "next/image"
 export default function Profile() {
   return (
     <div className={'block md:flex rounded-md m-2 bg-black text-mono text-white pb-5'}>
-      <Image src="/images/profile.jpg" width={300} height={300} alt="profile-pic" className={'flex-1/2 w-[300px] m-auto'}/>
+      <Image src="/images/profile.jpg" width={250} height={150} alt="profile-pic" className={'flex-1/2 w-[75%] md:w-[40%] h-auto m-auto'}/>
       <div className="about flex-1 mx-2">
         <h2 className='font-semibold text-[2.5rem] text-rose-700'>Deepanshu Bhatt</h2>
         <h4 className='inline-block p-1 text-rose-400 text-monospace'>Software Engineer...</h4>

@@ -9,13 +9,13 @@ export default function Projects() {
       <div className="project-box">
         <h2 className={`sub-heading text-blue-300 mt-7`}>Data Science and Deep Learning Projects</h2>
         {
-          deep_learning_projects.map(project => <ProjectBadge project={project} />)
+          deep_learning_projects.map((project,idx) => <ProjectBadge key={`web-project-${idx}`} project={project} />)
         }
       </div>
       <div className="project-box">
         <h2 className={`sub-heading text-rose-400 mt-7`}>Web Development Projects</h2>
         {
-          web_dev_projects.map(project => <ProjectBadge project={project} />)
+          web_dev_projects.map((project,idx) => <ProjectBadge key={`web-project-${idx}`} project={project} />)
         }
       </div>
     </div>

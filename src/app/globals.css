@@ -2,32 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgba(24, 24, 27, 0.9);
+  max-width: 900px;
+  min-width: 375px;
+  margin: auto;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.heading {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.5rem;
+}
+
+.sub-heading {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 5px;
+  font-size: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 3px 5px 3px;
+  min-width: 200px;
+  text-align: center;
+}
+
+.project-badge {
+  width: 95%;
+  min-width: 300px;
+  border-radius: 5px;
+  /* min-height: 350px; */
+  height: full;
+  margin: 40px auto;
+  background: rgba(25, 24, 24, 0.599);
+  box-shadow: 5px 3px 5px;
+  transition: all linear 0.1s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.links-container {
+  min-width: 250px;
+  height: 30px;
+  width: 40%;
+  display: flex;
+  margin: 10px auto;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  border: 1.2px solid rgb(12, 77, 218);
+  border-radius: 3px;
+  box-shadow: 3px 1px 5px rgb(12, 77, 218);
+}
+
+.project-name{
+  font-size:1.2rem;
+  display:inline-block;
+  min-width: 200px;
+  background:palevioletred;
+  margin-top: 15px;
+  padding: 5px;
+  border:solid 1px;
+  box-shadow: 3px 2px 5px white;
 }

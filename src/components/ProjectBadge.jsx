@@ -21,11 +21,11 @@ export default function ProjectBadge({ project }) {
           {project.description}
         </div>
       </div>
-      <div className="links-container text-blue-600">
+      <div className="links-container text-blue-600 items-center">
         {project.links.map(link => (
           <a
             key={link.name}
-            className="project-link flex-1 h-full p-2 text-center items-center hover:bg-white hover:cursor-pointer active:bg-slate-200 block"
+            className="project-link flex-1 h-full p-1 text-center items-center hover:bg-white hover:cursor-pointer active:bg-slate-200 block"
             href={link.link}
             target="_blank"
             rel="noopener noreferrer"

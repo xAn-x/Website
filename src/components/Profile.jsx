@@ -19,7 +19,7 @@ export default function Profile() {
         <p className='text-[1.1rem] p-2 text-justify'>
           Web development is another area where I excel, particularly with the MERN stack and Next.js. My portfolio includes projects like AmazeKart, an e-commerce platform, and MovieFlix, a streaming platform, both of which demonstrate my ability to integrate advanced technologies such as Next.js, Next-auth, and Redux. My approach to development is holistic, ensuring that both the backend and frontend are optimized for performance and user experience.
         </p>
-        <a href='https://drive.google.com/file/d/1VkOY2bferMlipKG8-iqcphslDsr9kFuc/view?usp=drive_link'  target='_blank' className={'inline-block text-center border border-blue-600 text-[1.1rem] p-3 w-[100px] hover:bg-blue-600 hover:border-white rounded-md my-2'}>
+        <a href='https://drive.google.com/file/d/1y4vijTLtxGLkzzzWvTaU-Zl9zEjH8AJw/view?usp=sharing'  target='_blank' className={'inline-block text-center border border-blue-600 text-[1.1rem] p-3 w-[100px] hover:bg-blue-600 hover:border-white rounded-md my-2'}>
             Resume
         </a>
       </div>

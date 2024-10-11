@@ -9,8 +9,17 @@ const deep_learning_projects = [
     }]
   },
   {
-    name: "YoloV5 Object Detector",
-    description: "This project focuses on developing a powerful object detection model using the YOLOv5 architecture, trained on a custom animal dataset. Despite the dataset's limited examples per class, the model achieved an impressive precision of over 90%. This success underscores the model's ability to accurately detect and localize animals within images, making it a valuable tool for wildlife monitoring and other similar applications.",
+    name: "Vision Lab",
+    description: "The Vision Lab repository features a collection of computer vision models and architectures I’ve developed from scratch, including Autoencoders, Generative Adversarial Networks (GANs), and more. Each project highlights foundational techniques and their applications, aimed at providing clear insights for both beginners and experienced practitioners. Explore my journey into computer vision as I continuously expand the repository with new implementations like ResNets and advanced GAN architectures.",
+    banner: "/images/projects/vision-lab.webp",
+    links: [{
+      name: "Github",
+      link: "https://github.com/xAn-x/Vision-Lab"
+    }]
+  },
+  {
+  name: "Animal Surveillance System",
+  description: "This project leverages the YOLOv5 architecture to develop an animal surveillance system capable of accurately detecting and localizing various animal species in real-time. Trained on a custom animal dataset, the model maintains over 90% precision despite limited examples per class, making it highly effective for wildlife monitoring, conservation efforts, and similar applications.",
     banner: "/images/projects/object-detection.png",
     links: [{
       name: "Github",

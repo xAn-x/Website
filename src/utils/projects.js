@@ -1,20 +1,20 @@
 const deep_learning_projects = [
   {
-    name: "MyGPT",
-    description: "This repository presents my in-depth journey of implementing a Language Model (GPT) from scratch. Starting with a fundamental bigram model, I progressively evolved the project into a sophisticated transformer model. This progression not only highlights the mechanics behind language modeling but also demonstrates how each iteration builds upon the previous one to improve performance and understanding of natural language processing techniques.",
-    banner: "/images/projects/MyGPT.jpg",
-    links: [{
-      name: "Github",
-      link: "https://github.com/xAn-x/Language-Modelling-Zero-to-One"
-    }]
-  },
-  {
     name: "Vision Lab",
     description: "The Vision Lab repository features a collection of computer vision models and architectures I’ve developed from scratch, including Autoencoders, Generative Adversarial Networks (GANs), and more. Each project highlights foundational techniques and their applications, aimed at providing clear insights for both beginners and experienced practitioners. Explore my journey into computer vision as I continuously expand the repository with new implementations like ResNets and advanced GAN architectures.",
     banner: "/images/projects/vision-lab.webp",
     links: [{
       name: "Github",
       link: "https://github.com/xAn-x/Vision-Lab"
+    }]
+  },
+  {
+    name: "MyGPT",
+    description: "This repository presents my in-depth journey of implementing a Language Model (GPT) from scratch. Starting with a fundamental bigram model, I progressively evolved the project into a sophisticated transformer model. This progression not only highlights the mechanics behind language modeling but also demonstrates how each iteration builds upon the previous one to improve performance and understanding of natural language processing techniques.",
+    banner: "/images/projects/MyGPT.jpg",
+    links: [{
+      name: "Github",
+      link: "https://github.com/xAn-x/Language-Modelling-Zero-to-One"
     }]
   },
   {

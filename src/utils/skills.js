@@ -91,7 +91,7 @@ const web_dev = [
   },
   {
     name: "TailWind CSS",
-    locn: "/logos/tailwindcss.svg",
+    locn: "/logos/tailwindCss.svg",
   },
   {
     name: "BootStrap",

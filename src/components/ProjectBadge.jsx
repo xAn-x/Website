@@ -10,7 +10,7 @@ export default function ProjectBadge({ project }) {
             src={project.banner}
             width={400}
             height={400}
-            className="project-image m-auto max-h-[200px] w-auto rounded-sm object-cover"
+            className="project-image m-auto h-[200px]  w-auto min-w-[200px] w-auto rounded-sm object-cover"
             alt={`${project.name} banner`}
           />
           <div className="project-name my-2 text-lg font-semibold">

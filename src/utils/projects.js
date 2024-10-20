@@ -1,5 +1,14 @@
 const deep_learning_projects = [
   {
+    name: "Football Shoot-out Analysis",
+    description: "A tool for analyzing football shootouts, focusing on tracking players and the ball, identifying the player with the ball, and dividing teams by jersey color using advanced techniques like SigLip, UMAP, and KMeans clustering.",
+    banner: "/images/projects/shootout-analysis.gif",
+    links: [{
+      name: "Github",
+      link: "https://github.com/xAn-x/Football-Shootout-Analysis"
+    }]
+  },
+  {
     name: "Vision Lab",
     description: "The Vision Lab repository features a collection of computer vision models and architectures I’ve developed from scratch, including Autoencoders, Generative Adversarial Networks (GANs), and more. Each project highlights foundational techniques and their applications, aimed at providing clear insights for both beginners and experienced practitioners. Explore my journey into computer vision as I continuously expand the repository with new implementations like ResNets and advanced GAN architectures.",
     banner: "/images/projects/vision-lab.webp",

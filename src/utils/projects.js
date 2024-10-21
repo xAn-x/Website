@@ -1,7 +1,7 @@
 const deep_learning_projects = [
   {
     name: "Football Shoot-out Analysis",
-    description: "A tool for analyzing football shootouts, focusing on tracking players and the ball, identifying the player with the ball, and dividing teams by jersey color using advanced techniques like SigLip, UMAP, and KMeans clustering.",
+    description: "A tool for analyzing football shootouts, focusing on tracking players and the ball, identifying the player with the ball, and dividing teams by jersey color using advanced techniques like SigLip, UMAP, and KMeans clustering and much more.",
     banner: "/images/projects/shootout-analysis.gif",
     links: [{
       name: "Github",

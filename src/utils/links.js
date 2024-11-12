@@ -1,32 +1,33 @@
 export const socials = [
   {
     "name": "Github",
-    "link": "https://github.com/your-username",
+    "link": "https://github.com/xAn-x",
     "icon": "/socials/github.svg"
   },
   {
     "name": "LinkedIn",
-    "link": "https://www.linkedin.com/in/your-username",
+    "link": "https://www.linkedin.com/in/deepanshu-bhatt-b74a21209/",
     "icon": "/socials/linkedin.svg"
   },
   {
     "name": "Gmail",
-    "link": "mailto:your-email@gmail.com",
+    "link": "mailto:deepanshubhat011@gmail.com",
     "icon": "/socials/gmail.svg"
   },
   {
     "name": "WhatsApp",
-    "link": "https://wa.me/your-whatsapp-number",
+    "link": "https://wa.me/8966821476",
     "icon": "/socials/whatsapp.svg"
   },
   {
-    "name": "CodeChef",
-    "link": "https://www.codechef.com/users/your-username",
-    "icon": "/socials/codechef.svg"
+    "name": "LeetCode",
+    "link": "https://leetcode.com/u/__xAn_/",
+    "icon": "/socials/leetcode.png"
   },
   {
-    "name": "LeetCode",
-    "link": "https://leetcode.com/your-username",
-    "icon": "/socials/leetcode.png"
-  }
+    "name": "CodeChef",
+    "link": "https://www.codechef.com/users/stanieee",
+    "icon": "/socials/codechef.svg"
+  },
+
 ];

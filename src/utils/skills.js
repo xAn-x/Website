@@ -2,7 +2,7 @@ export const ds_skills = [
   { name: "Python", locn: "/logos/python.png" },
   { name: "Pandas", locn: "/logos/pandas.png" },
   { name: "NumPy", locn: "/logos/numpy.png" },
-  { name: "Scikit-learn", locn: "/logos/sklearn.png" },
+  { name: "Sk-learn", locn: "/logos/sklearn.png" },
   { name: "Matplotlib", locn: "/logos/matplotlib.png" },
   { name: "Seaborn", locn: "/logos/seaborn.png" },
   { name: "TensorFlow", locn: "/logos/tensorflow.svg" },
@@ -36,5 +36,5 @@ export const additional_skills = [
   { name: "Docker", locn: "/logos/docker.png" },
   { name: "Linux", locn: "/logos/linux.png" },
   { name: "Problem Solving", locn: "/logos/problemSolving.png" },
-  { name: "Data Structures & Algorithms", locn: "/logos/dsa.svg" },
+  { name: "DSA", locn: "/logos/dsa.svg" },
 ];

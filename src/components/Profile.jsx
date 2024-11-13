@@ -14,7 +14,7 @@ export default function Profile() {
         />
         <div className="flex flex-col gap-2 px-5">
           <h2 className="font-bold text-[25px] font-sans text-red-500">Deepanshu Bhatt</h2> 
-          <h4 className="text-gray-600 text-[15px] font-mono text-blue-400">Software Engineer</h4>
+          <h4 className="text-gray-600 text-[15px] font-mono text-blue-500">Software Engineer</h4>
           <p className="text-gray-700 text-[13px]">
             I am a passionate software developer with a strong focus on Machine
             Learning, Deep Learning, and Data Science. My work involves building

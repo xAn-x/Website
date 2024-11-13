@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
+
+
 body {
   /* background-color: rgba(24, 24, 27, 0.9); */
   max-width: 900px;
   min-width: 375px;
   margin: auto;
+  font-family: 'Comic Neue', cursive;
 }
 
 .heading {
@@ -30,38 +34,29 @@ body {
   width: 95%;
   min-width: 300px;
   border-radius: 5px;
-  /* min-height: 350px; */
   height: full;
   margin: 40px auto;
-  /* background: rgba(0,0,0,0.9); */
-  box-shadow: 5px 3px 5px;
-  transition: all linear 0.1s;
-  /* color:white; */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* box-shadow: 5px 3px 5px; */
+  /* transition: all linear 0.1s; */
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 
-.links-container {
-  min-width: 250px;
-  height: 30px;
-  width: 40%;
-  display: flex;
-  margin: 10px auto;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  border: 1.2px solid rgb(12, 77, 218);
-  border-radius: 3px;
-  box-shadow: 3px 1px 5px rgb(12, 77, 218);
+
+
+/* Anime.css */
+.sub-heading {
+  font-family: 'Comic Neue', cursive;
 }
 
-.project-name{
-  font-size:1.2rem;
-  display:inline-block;
-  min-width: 200px;
-  background:rgb(241, 68, 126);
-  margin-top: 15px;
-  padding: 5px;
-  border:solid 1px;
-  box-shadow: 3px 2px 5px white;
+.project-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-box h2 {
+  font-family: 'Comic Neue', cursive;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
 }

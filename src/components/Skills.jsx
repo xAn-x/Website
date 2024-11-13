@@ -22,7 +22,7 @@ export default function Skills() {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: "easeInOut" }}
     >
-      <h2 className="sub-heading text-black">Skills</h2>
+      <h2 className="sub-heading text-black mb-2">Skills</h2>
       <div>
         <SkillsRow skills={programming_languages} heading="Programming Languages" styles={{
           text_col: 'black',

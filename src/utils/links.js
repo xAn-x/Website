@@ -16,7 +16,7 @@ export const socials = [
   },
   {
     "name": "WhatsApp",
-    "link": "https://wa.me/8966821476",
+    "link": "https://wa.me/+918966821476",
     "icon": "/socials/whatsapp.svg"
   },
   {

@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function SkillBadge({ skill }) {
   return (
     <div 
-      className="bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-3 text-center transition duration-300 ease-in-out hover:bg-gradient-to-br hover:from-gray-400 hover:to-gray-500 hover:shadow-lg text-black flex flex-col justify-center items-center w-[100px] h-[100px] md:w-[120px] md:h-[120px] overflow-hidden"
+      className="bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-3 text-center transition duration-300 ease-in-out hover:bg-gradient-to-br hover:from-gray-400 hover:to-gray-500 hover:shadow-lg text-black flex flex-col justify-center items-center w-[100px] h-[100px] md:w-[120px] md:h-[120px] overflow-hidden cursor-pointer"
     >
       <Image
         src={`${skill.locn}`}

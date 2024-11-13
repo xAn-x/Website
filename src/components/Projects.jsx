@@ -16,7 +16,7 @@ export default function Projects() {
       <AnimatePresence>
         <motion.h1
           ref={ref}
-          className="sub-heading text-black text-4xl font-bold mb-8 font-comic-neue"
+          className="sub-heading text-black text-4xl font-bold mb-8 "
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1 }}
@@ -28,7 +28,7 @@ export default function Projects() {
       <div className="project-box">
         <AnimatePresence>
           <motion.h2
-            className="sub-heading text-rose-500 text-3xl font-semibold mt-7"
+            className="sub-heading text-amber-800 text-3xl font-semibold mt-7"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 3 }}
@@ -56,7 +56,7 @@ export default function Projects() {
       <div className="project-box">
         <AnimatePresence>
           <motion.h2
-            className="sub-heading text-emerald-700 text-3xl font-semibold mt-7"
+            className="sub-heading text-rose-800 text-3xl font-semibold mt-7"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 2 }}

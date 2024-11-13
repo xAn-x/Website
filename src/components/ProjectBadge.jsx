@@ -37,7 +37,7 @@ export default function ProjectBadge({ project }) {
   return (
     <motion.div
       ref={ref}
-      className="project-badge relative overflow-hidden rounded-lg shadow-2xl border border-gray-300 bg-white bg-opacity-10 hover:backdrop-blur-md p-3 w-full h-[350px]"
+      className="project-badge relative overflow-hidden rounded-lg shadow-2xl border border-gray-300 bg-white bg-opacity-10 hover:backdrop-blur-md p-3 min-w-[350px] lg:w-4/5 h-[350px] "
       variants={containerVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
@@ -58,7 +58,7 @@ export default function ProjectBadge({ project }) {
           alt={`${project.name} banner`}
         />
       </motion.div>
-      <div className="project-name absolute inset-0 flex items-center justify-center text-3xl text-white bg-zinc-600 bg-opacity-70 p-3 font-comic-neue">
+      <div className="project-name absolute inset-0 flex items-center justify-center text-3xl text-white bg-zinc-600 bg-opacity-50 p-3 font-comic-neue">
         {project.name}
       </div>
       <AnimatePresence>
@@ -70,7 +70,7 @@ export default function ProjectBadge({ project }) {
             animate="hover"
             exit="initial"
           >
-            <div className="project-description text-md font-comic-neue text-gray-700 mb-2 overflow-y-auto max-h-70">
+            <div className="project-description text-lg md:text-xl text-gray-700 my-auto overflow-y-auto max-h-70">
               {project.description}
             </div>
             <div className="links-container flex justify-start items-baseline mb-5">

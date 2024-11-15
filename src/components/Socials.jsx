@@ -1,16 +1,58 @@
-import React from 'react'
+// Socials.jsx
+import { motion } from "framer-motion";
 import { socials } from "@/utils/links";
-import Image from 'next/image'
+import Image from "next/image";
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
+  },
+};
+
+const iconVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, type: "spring", stiffness: 100 },
+  },
+};
+
 export default function Socials() {
   return (
-    <div className={`bg-gray-200 rounded-md m-4 p-4 pb-10 mb-10 text-black mb-6`}>
-      <div className="sub-heading mb-10 text-black">Socials</div>
-      <div className="container bg-white w-2/3 min-w-[300px] m-auto flex flex-around justify-around items-center border border-black shadow-lg shadow-black p-3 flex-wrap ">
-        {socials.map((obj, idx) => <a href={obj.link} target="_blank" key={idx} className={'flex-1 p-3 text-center hover:bg-white hover:cursor-pointer active:bg-slate-200 rounded-md'}>
-          <Image src={obj.icon} height="40" width="40" alt={obj.name} className={`mx-auto w-[30px] md:w-[40px]`}/>
-          <div target="_blank" className="text-black">{obj.name}</div>
-        </a>)}
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible" // Animate on scroll into view
+      viewport={{ once: true }} // Only animate once
+      className="p-6 bg-white rounded-lg shadow-lg m-4 mb-10"
+    >
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Connect With Me</h2>
+
+      <div className="flex flex-wrap justify-center gap-4">
+        {socials.map((social, index) => (
+          <motion.a
+            key={index}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={iconVariants}
+            className="bg-gray-100 rounded-full p-3 hover:bg-gray-200 transition duration-300 flex items-center space-x-2"
+            whileHover={{ scale: 1.1 }} // Add hover effect
+          >
+            <Image src={social.icon} alt={social.name} width={24} height={24} />{" "}
+            {/* Consistent icon size */}
+            <span className="text-sm font-medium text-gray-700 hidden md:inline-block">
+              {" "}
+              {/* Show text on larger screens */}
+              {social.name}
+            </span>
+          </motion.a>
+        ))}
       </div>
-    </div>
-  )
+    </motion.div>
+  );
 }

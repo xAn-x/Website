@@ -1,104 +1,93 @@
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+// ProjectBadge.jsx
+"use client";
+import Image from "next/image";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
-const containerVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
-};
-
-const imageVariants = {
-  initial: { opacity: 1, scale: 1 },
-  hover: { opacity: 0.5, scale: 1.1 }
-};
-
-const textVariants = {
-  initial: { opacity: 0, y: 50 },
-  hover: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-};
-
-const linkVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  hover: { scale: 1.05 },
-  tap: { scale: 0.95 }
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
 };
 
 export default function ProjectBadge({ project }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
-  const handleToggle = () => {
-    setIsExpanded(!isExpanded);
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
   };
 
   return (
     <motion.div
       ref={ref}
-      className="project-badge relative overflow-hidden rounded-lg shadow-2xl border border-gray-300 bg-white bg-opacity-10 hover:backdrop-blur-md p-3 min-w-[350px] lg:w-4/5 h-[350px] "
-      variants={containerVariants}
+      variants={itemVariants}
       initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      animate={controls}
+      className="bg-white rounded-lg overflow-hidden shadow-md transition-shadow hover:shadow-lg relative group"
     >
-      <motion.div
-        className="image-container absolute inset-0"
-        variants={imageVariants}
-        initial="initial"
-        animate={isHovered ? 'hover' : 'initial'}
-      >
+      <div className="relative h-48 w-full">
         <Image
           src={project.banner}
+          alt={project.name}
           layout="fill"
           objectFit="cover"
-          className="project-image rounded-lg"
-          alt={`${project.name} banner`}
         />
-      </motion.div>
-      <div className="project-name absolute inset-0 flex items-center justify-center text-3xl text-white bg-zinc-600 bg-opacity-50 p-3 font-comic-neue">
-        {project.name}
+        <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
-      <AnimatePresence>
-        {isHovered || isExpanded ? (
-          <motion.div
-            className="text-container absolute inset-0 flex flex-col items-center justify-center bg-white bg-opacity-50 backdrop-blur-lg p-4"
-            variants={textVariants}
-            initial="initial"
-            animate="hover"
-            exit="initial"
+
+      <div className="p-4">
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          {project.name}
+        </h3>
+
+        <AnimatePresence>
+          <motion.p
+            key="description"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{
+              opacity: 1,
+              height: showFullDescription ? "auto" : "60px",
+            }} // Conditional height
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`text-gray-600 ${
+              showFullDescription ? "" : "line-clamp-3 overflow-hidden"
+            }`}
           >
-            <div className="project-description text-lg md:text-xl text-gray-700 my-auto overflow-y-auto max-h-70">
-              {project.description}
-            </div>
-            <div className="links-container flex justify-start items-baseline mb-5">
-              {project.links.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  variants={linkVariants}
-                  className="project-link flex-1 m-1 p-2 text-center rounded-md bg-black text-white hover:bg-gray-700 active:bg-gray-900 block max-w-[100px] max-h-[50px]"
-                  href={link.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover="hover"
-                  whileTap="tap"
-                  style={{ marginBottom: index === project.links.length - 1 ? '2rem' : '0' }}
-                >
-                  {link.name}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-      <button
-        className="expand-button bg-black text-white px-4 py-2 rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 absolute bottom-2 right-2 lg:hidden"
-        onClick={handleToggle}
-      >
-        {isExpanded ? 'Hide Details' : 'More Info'}
-      </button>
+            {project.description}
+          </motion.p>
+        </AnimatePresence>
+
+        <button
+          onClick={toggleDescription}
+          className="text-blue-500 font-medium mt-2"
+        >
+          {showFullDescription ? "Read Less" : "Read More"}
+        </button>
+
+        <div className="mt-4 flex space-x-2">
+          {project.links.map((link, index) => (
+            <motion.a
+              key={index}
+              href={link.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              className="bg-black text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-gray-700 transition duration-300"
+            >
+              {link.name}
+            </motion.a>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 }

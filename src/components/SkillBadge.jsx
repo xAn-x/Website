@@ -1,19 +1,28 @@
-import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function SkillBadge({ skill }) {
-  return (
-    <div 
-      className="bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg p-3 text-center transition duration-300 ease-in-out hover:bg-gradient-to-br hover:from-gray-400 hover:to-gray-500 hover:shadow-lg text-black flex flex-col justify-center items-center w-[100px] h-[100px] md:w-[120px] md:h-[120px] overflow-hidden cursor-pointer"
-    >
-      <Image
-        src={`${skill.locn}`}
-        height="200"
-        width="200"
-        alt={skill.name.toLowerCase()}
-        className="w-10 h-10 transition duration-300 ease-in-out transform hover:scale-110"
-      />
-      <p className="text-sm font-semibold mt-2">{skill.name}</p>
-    </div>
-  );
+    const percentage = skill.level * 20; // Convert level to percentage
+
+    return (
+        <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            className="bg-gray-100 rounded-lg p-3 flex items-center space-x-2 shadow-sm transition-shadow hover:shadow-md cursor-pointer relative" // Added 'relative' for positioning
+            style={{ minWidth: "120px" }}
+        >
+            <Image src={skill.locn} alt={skill.name} width={24} height={24} />
+            <div className="flex flex-col w-full"> 
+                <p className="text-sm font-medium">{skill.name}</p>
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                    <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${percentage}%` }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="bg-blue-500 h-2.5 rounded-full"
+                    ></motion.div>
+                </div>
+            </div>
+        </motion.div>
+    );
 }

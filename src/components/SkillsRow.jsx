@@ -1,15 +1,23 @@
-import React from 'react';
 import SkillBadge from './SkillBadge';
+import { motion } from 'framer-motion';
+
 
 export default function SkillsRow({ skills, heading }) {
   return (
-    <div className={`my-2 font-bold text-black bg-white p-3  rounded-md border-b border-gray`}>
-      <div className={`skillName text-[1.1rem] inline-block p-3 border rounded-md text-white bg-black mb-2`}>{heading}</div>
-      <div className={`container grid grid-cols-3 sm:grid-cols-5  gap-3 mb-3 m-auto items-baseline justify-around`}>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+
+      className="mb-6"
+    >
+      <h3 className="text-xl font-semibold mb-3 mx-auto">{heading}</h3>
+      <div className="grid gap-3 grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mx-auto">
         {skills.map((skill, idx) => (
-          <SkillBadge key={`skill-${idx}`} skill={skill} /> 
+          <SkillBadge key={idx} skill={skill} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

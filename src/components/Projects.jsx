@@ -1,82 +1,69 @@
-"use client"
-import React from 'react';
+// Projects.jsx
+"use client";
 import ProjectBadge from './ProjectBadge';
-import { deep_learning_projects, web_dev_projects } from "@/utils/projects";
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
+import { deep_learning_projects,web_dev_projects } from '@/utils/projects'; // Import your projects data, separated by category
+
+
+const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            ease: 'easeOut',
+            staggerChildren: 0.3,
+            delayChildren: 0.2
+        }
+    }
+};
 
 export default function Projects() {
-  const [ref, inView] = useInView({
-    triggerOnce: true, // Only trigger the animation once
-    threshold: 0.1,    // Trigger when 10% of the element is in view
-  });
+    const controls = useAnimation();
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  return (
-    <div className="m-4 p-5 bg-gray-100 rounded-xl text-black text-monospace shadow-lg">
-      <AnimatePresence>
-        <motion.h1
-          ref={ref}
-          className="sub-heading text-black text-4xl font-bold mb-8 "
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 1 }}
+    useEffect(() => {
+        if (inView) {
+            controls.start('visible');
+        }
+    }, [controls, inView]);
+
+    return (
+        <motion.section
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
+            className="m-4 p-4 rounded-lg bg-white shadow-lg"
         >
-          Projects
-        </motion.h1>
-      </AnimatePresence>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Projects</h2>
 
-      <div className="project-box">
-        <AnimatePresence>
-          <motion.h2
-            className="sub-heading text-amber-800 text-3xl font-semibold mt-7"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 3 }}
-          >
-            Data Science and Deep Learning Projects
-          </motion.h2>
-        </AnimatePresence>
-        <AnimatePresence>
-          {deep_learning_projects.map((project, idx) => (
-            <motion.div
-              key={`deep-learning-project-${idx}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              <ProjectBadge project={project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
 
-      <hr className="my-6 border-black" />
-      {/* <hr className="my-6 border-black" /> */}
+            {/* Deep Learning Projects */}
+            <div>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-8 m-auto bg-zinc-800 text-white text-center w-4/5 rounded-md p-2">Deep Learning</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                    {deep_learning_projects.map((project, index) => (
+                        <ProjectBadge key={index} project={project} />
+                    ))}
+                </div>
+            </div>
 
-      <div className="project-box">
-        <AnimatePresence>
-          <motion.h2
-            className="sub-heading text-rose-800 text-3xl font-semibold mt-7"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 2 }}
-          >
-            Web Development Projects
-          </motion.h2>
-        </AnimatePresence>
-        <AnimatePresence>
-          {web_dev_projects.map((project, idx) => (
-            <motion.div
-              key={`web-dev-project-${idx}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              <ProjectBadge project={project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
+
+            {/* Web Dev Projects */}
+            <div className="mt-8"> {/* Added margin for separation */}
+                <h3 className="text-2xl font-semibold text-gray-700 mb-4 m-auto bg-zinc-800 text-white text-center w-4/5 rounded-md p-2">Web Development</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                    {web_dev_projects.map((project, index) => (
+                        <ProjectBadge key={index} project={project} />
+                    ))}
+                </div>
+            </div>
+
+        </motion.section>
+    );
 }
+

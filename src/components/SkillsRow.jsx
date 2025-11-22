@@ -1,6 +1,5 @@
-import SkillBadge from './SkillBadge';
-import { motion } from 'framer-motion';
-
+import SkillBadge from "./SkillBadge";
+import { motion } from "framer-motion";
 
 export default function SkillsRow({ skills, heading }) {
   return (
@@ -9,11 +8,12 @@ export default function SkillsRow({ skills, heading }) {
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
       }}
-
-      className="mb-6"
+      className="mb-8"
     >
-      <h3 className="text-xl font-semibold mb-3 mx-auto">{heading}</h3>
-      <div className="grid gap-3 grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mx-auto">
+      <h3 className="text-lg font-retro text-neonPurple mb-4 border-b border-gray-700 pb-2 inline-block pr-8">
+        {heading}
+      </h3>
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {skills.map((skill, idx) => (
           <SkillBadge key={idx} skill={skill} />
         ))}

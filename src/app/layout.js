@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/images/profile.jpg" />
       <body className>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className="main h-screen m-2 mt-3 text-black">{children}</div>
       </body>
     </html>

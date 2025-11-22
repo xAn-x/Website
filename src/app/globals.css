@@ -1,62 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Press+Start+2P&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Sixtyfour&display=swap');
+:root {
+  --bg-color: #050505;
+  --text-color: #e0e0e0;
+  --primary-color: #ff00ff; /* Neon Pink */
+  --secondary-color: #00ffff; /* Cyan */
+  --accent-color: #bf00ff; /* Purple */
+  --grid-color: rgba(0, 255, 255, 0.1);
+}
 
 body {
-  /* background-color: rgba(24, 24, 27, 0.9); */
-  max-width: 900px;
-  min-width: 375px;
-  margin: auto;
-  font-family: 'Comic Neue', 'IBM Plex Mono Italic', 'Applesoft', 'Verdana',cursive;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Space Mono", monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.heading {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2.5rem;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
-
-.sub-heading {
-  display: inline-block;
-  border: 1px solid;
-  border-radius: 2px;
-  padding: 5px;
-  font-size: 2rem;
-  font-family: 'Courier New', Courier, monospace;
-  box-shadow: 3px 5px 3px;
-  min-width: 200px;
-  text-align: center;
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
 }
-
-.project-badge {
-  width: 95%;
-  min-width: 300px;
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
   border-radius: 5px;
-  height: full;
-  margin: 40px auto;
-  /* box-shadow: 5px 3px 5px; */
-  /* transition: all linear 0.1s; */
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
 }
 
-
-
-
-/* Anime.css */
-.sub-heading {
-  font-family: 'Comic Neue', cursive;
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Press Start 2P", cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.project-box {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.retro-text-shadow {
+  text-shadow: 2px 2px 0px var(--primary-color),
+    -2px -2px 0px var(--secondary-color);
 }
 
-.project-box h2 {
-  font-family: 'Comic Neue', cursive;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+.neon-border {
+  box-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+}
+
+/* CRT Effect Overlay (Optional, can be heavy) */
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.scanlines {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size: 100% 2px, 3px 100%;
+}
+
+/* Stars Animation */
+.stars {
+  background: transparent;
+}
+.stars::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+      2px 2px at 20px 30px,
+      #eee,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars 100s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes stars {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
 }

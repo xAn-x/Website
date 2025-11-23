@@ -60,7 +60,7 @@ export default function Projects() {
       <div>
         <h3 className="text-xl font-mono text-black bg-neonPink inline-block px-4 py-1 mb-6 transform -skew-x-12 border-r-4 border-b-4 border-white">
           <span className="transform skew-x-12 inline-block font-bold">
-            :: Web Development ::
+            :: Web Development
           </span>
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">

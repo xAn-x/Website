@@ -1,4 +1,4 @@
-const deep_learning_projects = [
+export const deep_learning_projects = [
   {
     name: "Football Shoot-out Analysis",
     description: "A sophisticated tool for analyzing football shootouts by tracking players and the ball, recognizing possession, and differentiating teams by jersey color using advanced techniques such as SiGML, UMAP, and KMeans clustering.",
@@ -93,7 +93,7 @@ const deep_learning_projects = [
   }
 ];
 
-const web_dev_projects = [
+export const web_dev_projects = [
   {
     name: "E-commerce Website",
     description: "A feature-rich e-commerce website built using the MERN (MongoDB, Express, React, Node.js) stack and Material-UI for a fully responsive user interface. The platform offers essential e-commerce functionalities like product search, detailed product pages, cart management, and a streamlined checkout process, ensuring a user-friendly experience and robust backend integration.",
@@ -140,9 +140,3 @@ const web_dev_projects = [
     ]
   }
 ];
-
-
-module.exports = {
-  deep_learning_projects,
-  web_dev_projects,
-};

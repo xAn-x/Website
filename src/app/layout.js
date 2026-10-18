@@ -1,19 +1,21 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import "@fontsource-variable/newsreader";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/ibm-plex-mono/400.css";
 
 export const metadata = {
-  title: "Deepanshu's Portfolio",
-  description: "A website showcasing my projects and experience",
+  title: "Deepanshu Bhatt — Systems Engineer",
+  description:
+    "Systems Engineer working across GenAI, big data, and event-driven systems. Exploring backend engineering, AWS, Linux, and football analytics.",
+  icons: {
+    icon: "/images/profile.jpg",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <link rel="icon" href="/images/profile.jpg" />
-      <body className>
-        {/* <Navbar/> */}
-        <div className="main h-screen m-2 mt-3 text-black">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

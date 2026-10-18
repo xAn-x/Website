@@ -36,7 +36,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="hero-art" aria-label="Engineering interests">
+      <div className="hero-art" aria-label="Professional and personal interests">
         <div className="hero-index" aria-hidden="true">
           <span>AREAS OF INTEREST</span>
           <span>01 — 03</span>

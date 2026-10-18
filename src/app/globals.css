@@ -177,7 +177,7 @@ summary:focus-visible {
 }
 
 .hero h1 {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0;
   font-size: clamp(4rem, 7.8vw, 7.5rem);
   font-weight: 600;
@@ -267,13 +267,6 @@ summary:focus-visible {
   color: var(--coral);
 }
 
-.hero-footnote {
-  margin: 27px 0 0 5px;
-  color: var(--ink-faint);
-  font-family: var(--mono);
-  font-size: 0.63rem;
-}
-
 .hero-art {
   position: relative;
   display: flex;
@@ -325,10 +318,38 @@ summary:focus-visible {
   letter-spacing: 0.05em;
 }
 
-.ascii-card {
+.focus-card-stack {
+  position: relative;
   width: min(100%, 360px);
   margin-inline: auto;
-  padding: 15px 17px 18px;
+}
+
+.focus-card-stack::before,
+.focus-card-stack::after {
+  position: absolute;
+  border: 1px solid rgba(245, 240, 230, 0.15);
+  background: #29283d;
+  content: "";
+  transition: transform 180ms ease;
+}
+
+.focus-card-stack::before {
+  inset: 5px -5px -5px 5px;
+  transform: rotate(1.5deg);
+}
+
+.focus-card-stack::after {
+  inset: 10px -10px -10px 10px;
+  opacity: 0.45;
+  transform: rotate(-1deg);
+}
+
+.focus-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-inline: auto;
+  padding: 17px 19px 20px;
   border: 1px solid rgba(245, 240, 230, 0.23);
   background: var(--ink);
   box-shadow: 10px 11px 0 rgba(28, 27, 46, 0.12);
@@ -337,7 +358,51 @@ summary:focus-visible {
   transition: transform 180ms ease;
 }
 
-.hero-art:hover .ascii-card {
+.hero-art:hover .focus-card-stack::before {
+  transform: translate(2px, 1px) rotate(2deg);
+}
+
+.hero-art:hover .focus-card-stack::after {
+  transform: translate(4px, 2px) rotate(-1.5deg);
+}
+
+.focus-tabs {
+  display: flex;
+  gap: 7px;
+  margin-top: 1px;
+}
+
+.focus-tabs button {
+  padding: 5px 8px;
+  border: 1px solid rgba(245, 240, 230, 0.22);
+  border-radius: 999px;
+  background: transparent;
+  color: #aaa9b8;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.54rem;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.focus-tabs button.is-active {
+  border-color: #a6b0ff;
+  background: rgba(166, 176, 255, 0.12);
+  color: #d8dcff;
+}
+
+.focus-tabs button:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
+}
+
+.focus-panel {
+  animation: focus-panel-arrive 280ms ease-out both;
+}
+
+.hero-art:hover .focus-card {
   transform: rotate(0deg) translateY(-2px);
 }
 
@@ -370,59 +435,52 @@ summary:focus-visible {
   margin-left: 5px;
 }
 
-.ascii-content {
-  display: flex;
-  min-height: 147px;
-  align-items: center;
-  justify-content: center;
-  gap: 21px;
+.focus-command {
+  margin: 22px 0 13px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: #c7c6d1;
 }
 
-.ascii-art {
-  min-width: 160px;
-  margin: 0;
+.focus-command span {
   color: var(--acid);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  line-height: 1.16;
-  animation: ascii-arrive 300ms ease-out both;
 }
 
-.terminal-data {
-  width: 116px;
-  color: #f3f0e7;
-  font-family: var(--mono);
-  font-size: 0.59rem;
-  line-height: 1.7;
+.focus-list {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.terminal-data > span {
-  color: #a6b0ff;
-  font-size: 0.53rem;
-}
-
-.ascii-status {
-  min-height: 2.3em;
-  margin-top: 6px;
-  animation: ascii-arrive 300ms ease-out both;
-}
-
-.ascii-progress {
+.focus-list li {
   display: flex;
-  gap: 6px;
-  margin-top: 12px;
+  align-items: flex-start;
+  gap: 14px;
 }
 
-.ascii-progress i {
-  width: 6px;
-  height: 6px;
-  border: 1px solid #78788b;
-  border-radius: 50%;
+.focus-number {
+  padding-top: 2px;
+  color: #a6b0ff;
+  font-family: var(--mono);
+  font-size: 0.57rem;
 }
 
-.ascii-progress i.is-active {
-  border-color: var(--coral);
-  background: var(--coral);
+.focus-area-copy {
+  display: grid;
+  gap: 3px;
+}
+
+.focus-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.focus-detail {
+  color: #aaa9b8;
+  font-family: var(--mono);
+  font-size: 0.56rem;
 }
 
 .hero-art-caption {
@@ -432,10 +490,21 @@ summary:focus-visible {
   font-family: var(--display);
   font-size: 1.1rem;
   font-style: italic;
+  text-align: center;
 }
 
-.hero-art-caption span {
+.hero-art-caption-tail {
+  white-space: nowrap;
+}
+
+.hero-art-mark {
+  display: inline-block;
+  margin-left: 0.25em;
   color: var(--coral);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.8em;
+  vertical-align: 0.08em;
 }
 
 .section {
@@ -480,120 +549,122 @@ summary:focus-visible {
   line-height: 1.8;
 }
 
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+.experience-timeline {
+  position: relative;
+  margin-left: 8px;
+  padding-left: 34px;
+  border-left: 1px solid var(--line);
 }
 
-.experience-card {
+.timeline-role {
+  position: relative;
+  max-width: 900px;
+}
+
+.timeline-role::before {
+  position: absolute;
+  top: 8px;
+  left: -40px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--paper);
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue);
+  content: "";
+}
+
+.timeline-role-header {
   display: flex;
-  min-height: 335px;
-  flex-direction: column;
-  padding: 22px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.3);
-  transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.experience-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 5px 6px 0 rgba(28, 27, 46, 0.08);
-}
-
-.experience-card:nth-child(2) {
-  background: #eceafa;
-}
-
-.experience-card:nth-child(3) {
-  background: #f0e5dc;
-}
-
-.experience-topline {
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 
-.experience-index {
+.timeline-role-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.timeline-role-header p {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+.timeline-period {
   color: var(--ink-faint);
   font-family: var(--mono);
-  font-size: 0.61rem;
+  font-size: 0.62rem;
 }
 
-.experience-type {
-  padding: 5px 8px;
-  border: 1px solid rgba(28, 27, 46, 0.2);
-  border-radius: 999px;
-  color: var(--blue);
-  font-family: var(--mono);
-  font-size: 0.53rem;
-  text-transform: uppercase;
-}
-
-.experience-glyph {
+.timeline-highlights {
   display: grid;
-  width: 70px;
-  height: 70px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-highlight {
+  display: grid;
+  grid-template-columns: 34px minmax(170px, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: 12px 18px;
+  padding: 19px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline-glyph {
+  display: grid;
+  width: 30px;
+  height: 30px;
   place-items: center;
-  margin-block: 26px 17px;
   border: 1px solid rgba(61, 77, 224, 0.35);
   border-radius: 50%;
   color: var(--blue);
   font-family: var(--display);
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-style: italic;
   transform: rotate(-8deg);
 }
 
-.experience-card:nth-child(2) .experience-glyph {
+.timeline-highlight:nth-child(2) .timeline-glyph {
   border-radius: 20px 50% 20px 50%;
   color: #9a493e;
   transform: rotate(8deg);
 }
 
-.experience-card:nth-child(3) .experience-glyph {
-  border-radius: 17px;
+.timeline-highlight:nth-child(3) .timeline-glyph {
+  border-radius: 12px 50% 12px 50%;
   color: var(--coral);
   transform: rotate(5deg);
 }
 
-.experience-card h3 {
-  max-width: 300px;
+.timeline-highlight-heading h4 {
   margin: 0;
-  font-family: var(--display);
-  font-size: clamp(1.55rem, 2vw, 1.9rem);
-  font-weight: 480;
-  letter-spacing: -0.05em;
-  line-height: 1.02;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
-.experience-card p {
-  margin: 12px 0 20px;
-  color: var(--ink-soft);
-  font-size: 0.77rem;
-  line-height: 1.72;
-}
-
-.experience-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 13px;
-  border-top: 1px solid rgba(28, 27, 46, 0.15);
-  color: var(--ink-faint);
+.timeline-highlight-heading span {
+  display: block;
+  margin-top: 6px;
+  color: var(--blue);
   font-family: var(--mono);
   font-size: 0.57rem;
+  line-height: 1.6;
 }
 
-.experience-footer strong {
-  color: var(--blue);
-  font-weight: 500;
+.timeline-highlight > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.7;
 }
 
 .project-grid {
@@ -862,10 +933,10 @@ summary:focus-visible {
   }
 }
 
-@keyframes ascii-arrive {
+@keyframes focus-panel-arrive {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -894,30 +965,14 @@ summary:focus-visible {
     padding-inline: 15px;
   }
 
-  .ascii-card {
+  .focus-card {
     padding-inline: 11px;
   }
 
-  .ascii-content {
-    gap: 12px;
-  }
-
-  .ascii-art {
-    min-width: 140px;
-    font-size: 0.64rem;
-  }
-
-  .terminal-data {
-    width: 100px;
-    font-size: 0.54rem;
-  }
-
-  .experience-grid,
   .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .experience-card:last-child,
   .project-card:last-child {
     grid-column: 1 / -1;
   }
@@ -1035,11 +1090,6 @@ summary:focus-visible {
     margin-top: 21px;
   }
 
-  .hero-footnote {
-    margin-top: 22px;
-    font-size: 0.58rem;
-  }
-
   .hero-art {
     min-height: 325px;
     padding: 52px 12px 23px;
@@ -1051,24 +1101,9 @@ summary:focus-visible {
     font-size: 0.51rem;
   }
 
-  .ascii-card {
+  .focus-card {
     width: min(100%, 340px);
     padding: 13px 11px;
-  }
-
-  .ascii-content {
-    min-height: 138px;
-    gap: 12px;
-  }
-
-  .ascii-art {
-    min-width: 138px;
-    font-size: 0.62rem;
-  }
-
-  .terminal-data {
-    width: 105px;
-    font-size: 0.55rem;
   }
 
   .hero-art-caption {
@@ -1093,19 +1128,36 @@ summary:focus-visible {
     margin-top: 13px;
   }
 
-  .experience-grid,
   .project-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .experience-card {
-    min-height: 310px;
-  }
-
-  .experience-card:last-child,
   .project-card:last-child {
     grid-column: auto;
+  }
+
+  .experience-timeline {
+    margin-left: 2px;
+    padding-left: 25px;
+  }
+
+  .timeline-role::before {
+    left: -31px;
+  }
+
+  .timeline-role-header {
+    gap: 12px;
+  }
+
+  .timeline-highlight {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 8px 12px;
+    padding-block: 16px;
+  }
+
+  .timeline-highlight > p {
+    grid-column: 2;
   }
 
   .project-image {

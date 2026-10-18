@@ -1,24 +1,31 @@
-const contributions = [
+const roles = [
   {
-    type: "GenAI / PySpark",
-    glyph: "↝",
-    title: "Making legacy jobs make sense.",
-    description:
-      "Built a tool that condenses Boomi XML into a clear English explanation, then uses LangGraph and an LLM to iteratively generate a PySpark job. A test-driven loop targets a 95% pass threshold before handing the result to a developer for feedback.",
-  },
-  {
-    type: "Transcribe / Analyze",
-    glyph: "〰",
-    title: "Turning conversations into signals.",
-    description:
-      "Built a multi-threaded flow pairing Amazon Transcribe with batched LLM analysis. It turns call recordings into structured JSON with transcription and sentiment data for downstream analysis, at a scale of 20M recordings.",
-  },
-  {
-    type: "Big data / Events",
-    glyph: "⤳",
-    title: "Keeping data moving.",
-    description:
-      "Worked on PySpark data workflows and helped architect event-driven pipelines—thinking through how data moves, what triggers the next step, and how the pieces fit together.",
+    company: "TCS",
+    title: "Systems Engineer",
+    period: "Current",
+    highlights: [
+      {
+        glyph: "↝",
+        title: "Modernizing Boomi jobs with PySpark",
+        technologies: "LangGraph · AWS Bedrock · PySpark",
+        description:
+          "Used LangGraph and AWS Bedrock to interpret legacy Boomi XML and generate PySpark replacements. An automated test loop targets a 95% pass rate before engineer review; the workflow cut migration timelines from months to weeks.",
+      },
+      {
+        glyph: "〰",
+        title: "Analyzing 20M call recordings",
+        technologies: "Amazon Transcribe · AWS Glue · AWS Bedrock",
+        description:
+          "Built a multithreaded pipeline to transcribe and analyze 20M call recordings, producing structured transcripts and sentiment data for downstream use.",
+      },
+      {
+        glyph: "⤳",
+        title: "Big data & event-driven pipelines",
+        technologies: "AWS Glue · PySpark · Lambda · SQS · SNS · Aurora",
+        description:
+          "Worked on ETL jobs with AWS Glue and PySpark, plus event-driven pipelines using Lambda, SQS, and SNS to coordinate data processing across services.",
+      },
+    ],
   },
 ];
 
@@ -31,35 +38,43 @@ export default function Experience() {
     >
       <div className="section-heading">
         <div>
-          <p className="section-kicker">01 / TCS · systems engineer</p>
+          <p className="section-kicker">01 / experience</p>
           <h2 id="experience-title">
-            Serious systems.
+            Systems in
             <br />
-            <em>Interesting</em> problems.
+            <em>production.</em>
           </h2>
         </div>
         <p className="section-description">
-          A few projects from my day job: generative AI, conversation
-          intelligence, and data systems. Project details are kept high-level.
+          Good developers break production. Great ones know where the logs are.
+          Bad ones never make it past staging.
         </p>
       </div>
 
-      <div className="experience-grid">
-        {contributions.map((contribution, index) => (
-          <article className="experience-card" key={contribution.title}>
-            <div className="experience-topline">
-              <span className="experience-index">PROJECT 0{index + 1}</span>
-              <span className="experience-type">{contribution.type}</span>
-            </div>
-            <span className="experience-glyph" aria-hidden="true">
-              {contribution.glyph}
-            </span>
-            <h3>{contribution.title}</h3>
-            <p>{contribution.description}</p>
-            <div className="experience-footer">
-              <strong>TCS / Systems Engineer</strong>
-              <span>↗</span>
-            </div>
+      <div className="experience-timeline">
+        {roles.map((role) => (
+          <article className="timeline-role" key={`${role.company}-${role.title}`}>
+            <header className="timeline-role-header">
+              <div>
+                <h3>{role.company}</h3>
+                <p>{role.title}</p>
+              </div>
+              <span className="timeline-period">{role.period}</span>
+            </header>
+            <ul className="timeline-highlights">
+              {role.highlights.map((highlight) => (
+                <li className="timeline-highlight" key={highlight.title}>
+                  <span className="timeline-glyph" aria-hidden="true">
+                    {highlight.glyph}
+                  </span>
+                  <div className="timeline-highlight-heading">
+                    <h4>{highlight.title}</h4>
+                    <span>{highlight.technologies}</span>
+                  </div>
+                  <p>{highlight.description}</p>
+                </li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>

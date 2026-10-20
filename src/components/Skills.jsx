@@ -2,22 +2,23 @@ const areas = [
   {
     label: "01 / intelligence",
     title: "ML & GenAI",
-    details: "LLMs · LangGraph · PyTorch · computer vision",
+    details: "PyTorch · TensorFlow · LangGraph · Hugging Face · OpenCV",
   },
   {
     label: "02 / infrastructure",
-    title: "AWS & backend",
-    details: "AWS · event-driven design · APIs · Linux",
+    title: "AWS & Web",
+    details:
+      "Bedrock · Glue · Lambda · Node.js · Next.js · learning Go",
   },
   {
     label: "03 / throughput",
     title: "Data engineering",
-    details: "PySpark · Python · distributed workflows",
+    details: "PySpark · Python · AWS Glue · SQS · SNS · Aurora",
   },
   {
     label: "04 / personal patch",
     title: "Football & code",
-    details: "Match analysis · side projects · too many terminal tabs",
+    details: "Football · Coffee · Music · Linux",
   },
 ];
 

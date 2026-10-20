@@ -13,7 +13,13 @@ export default function ProjectBadge({ project, category }) {
         />
       </div>
       <div className="project-body">
-        <p className="project-category">{category}</p>
+        <div className="project-categories" aria-label="Project topics">
+          {category.map((topic) => (
+            <span className="project-category" key={topic}>
+              {topic}
+            </span>
+          ))}
+        </div>
         <h3>{project.name}</h3>
         <p>{project.description}</p>
         <div className="project-links">

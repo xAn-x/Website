@@ -86,6 +86,7 @@ summary:focus-visible {
 }
 
 .brand-mark {
+  position: relative;
   display: grid;
   width: 33px;
   height: 33px;
@@ -93,9 +94,32 @@ summary:focus-visible {
   border-radius: 50%;
   background: var(--blue);
   color: white;
-  font-family: var(--display);
-  font-size: 0.94rem;
-  font-style: italic;
+  box-shadow: 0 3px 8px rgba(61, 77, 224, 0.18);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.brand-mark::after {
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--paper);
+  border-radius: 50%;
+  background: var(--coral);
+  content: "";
+}
+
+.brand-mark svg {
+  width: 21px;
+  height: 21px;
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-7deg) translateY(-1px);
+  box-shadow: 0 5px 12px rgba(61, 77, 224, 0.28);
 }
 
 .nav-links {
@@ -112,22 +136,77 @@ summary:focus-visible {
   transition: color 150ms ease;
 }
 
+.nav-links a {
+  position: relative;
+  padding-block: 5px;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--blue);
+  content: "";
+  transition: transform 180ms ease;
+}
+
 .nav-links a:hover,
 .nav-mobile-links a:hover {
   color: var(--blue);
 }
 
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
 .nav-contact {
   display: inline-flex;
+  min-height: 39px;
   align-items: center;
-  gap: 8px;
-  font-size: 0.79rem;
+  gap: 10px;
+  padding: 0 9px 0 14px;
+  border: 1px solid var(--blue);
+  border-radius: 3px;
+  background: var(--blue);
+  box-shadow: 2px 2px 0 rgba(28, 27, 46, 0.22);
+  color: #fff;
+  font-size: 0.76rem;
   font-weight: 700;
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.nav-contact:hover {
+  transform: translate(-1px, -1px);
+  border-color: #2938c1;
+  background: #2938c1;
+  box-shadow: 3px 3px 0 rgba(28, 27, 46, 0.22);
 }
 
 .nav-contact span {
-  color: var(--coral);
-  font-size: 1rem;
+  display: grid;
+  width: 21px;
+  height: 21px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(229, 237, 139, 0.16);
+  color: var(--acid);
+  font-size: 0.9rem;
+  line-height: 1;
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.nav-contact:hover span {
+  transform: translate(1px, -1px);
+  background: rgba(229, 237, 139, 0.25);
 }
 
 .nav-mobile {
@@ -674,6 +753,8 @@ summary:focus-visible {
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--line);
   background: #eee9dd;
@@ -713,16 +794,40 @@ summary:focus-visible {
 }
 
 .project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 19px 19px 18px;
 }
 
+.project-categories {
+  display: flex;
+  min-height: 24px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 6px;
+  margin-bottom: 11px;
+}
+
 .project-category {
-  margin: 0 0 9px;
-  color: #ad4437;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 7px;
+  border: 1px solid rgba(61, 77, 224, 0.24);
+  background: rgba(61, 77, 224, 0.035);
+  color: var(--ink-soft);
   font-family: var(--mono);
   font-size: 0.58rem;
   letter-spacing: 0.035em;
   text-transform: uppercase;
+}
+
+.project-category::before {
+  width: 4px;
+  height: 4px;
+  background: var(--coral);
+  content: "";
 }
 
 .project-body h3 {
@@ -732,6 +837,7 @@ summary:focus-visible {
   font-weight: 500;
   letter-spacing: -0.05em;
   line-height: 1.05;
+  min-height: 2.1em;
 }
 
 .project-body > p:not(.project-category) {
@@ -746,6 +852,7 @@ summary:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 13px;
+  margin-top: auto;
 }
 
 .project-links a {
@@ -835,8 +942,8 @@ summary:focus-visible {
 .arch-note {
   display: flex;
   align-items: center;
-  gap: 13px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 12px;
   color: white;
   font-size: 0.75rem;
 }
@@ -846,7 +953,7 @@ summary:focus-visible {
   color: var(--acid);
   font-family: var(--mono);
   font-size: 0.54rem;
-  line-height: 1.1;
+  line-height: 0.95;
 }
 
 .arch-note span {
@@ -975,6 +1082,23 @@ summary:focus-visible {
 
   .project-card:last-child {
     grid-column: 1 / -1;
+    align-self: start;
+  }
+
+  .project-card:last-child .project-body {
+    flex: initial;
+  }
+
+  .project-card:last-child .project-body h3 {
+    min-height: 0;
+  }
+
+  .project-card:last-child .project-body > p:not(.project-category) {
+    min-height: 0;
+  }
+
+  .project-card:last-child .project-links {
+    margin-top: 0;
   }
 
   .skill-board {
@@ -1135,6 +1259,10 @@ summary:focus-visible {
 
   .project-card:last-child {
     grid-column: auto;
+  }
+
+  .project-body h3 {
+    min-height: 0;
   }
 
   .experience-timeline {

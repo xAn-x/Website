@@ -13,10 +13,9 @@ export default function Socials() {
     >
       <div className="contact-copy">
         <p className="section-kicker">04 / your move</p>
-        <h2 id="contact-title">Bring me a good problem. Or a good match.</h2>
+        <h2 id="contact-title">Know me more.</h2>
         <p>
-          Open to interesting engineering conversations, side-project rabbit
-          holes, and friendly arguments about football.
+          Engineering, side projects, and the occasional football tangent.
         </p>
       </div>
       <div className="contact-links">
